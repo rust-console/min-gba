@@ -15,7 +15,7 @@ jobs:
         rust:
         - { toolchain: nightly }
     steps:
-    - uses: hecrj/setup-rust-action@v1
+    - uses: actions-rs/toolchain@v1
       with:
         profile: minimal
         toolchain: ${{ matrix.rust.toolchain }}
