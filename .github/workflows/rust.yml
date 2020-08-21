@@ -1,0 +1,31 @@
+name: Rust
+
+on:
+  push: {}
+  pull_request: {}
+  schedule:
+    # Min Hr Day Month Weekday; so this should be 1am each day.
+    - cron: '* 1 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust:
+        - { toolchain: nightly }
+    steps:
+    - uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: ${{ matrix.rust.toolchain }}
+        default: true
+    - uses: actions/checkout@v1
+    - name: Get ARM Binutils
+      run: sudo apt-get update && sudo apt-get install binutils-arm-none-eabi --assume-yes
+    - name: Install Rust Source 
+      run: rustup component add rust-src
+    - uses: actions-rs/cargo@v1
+      with:
+        toolchain: ${{ matrix.rust.toolchain }}
+        command: build
