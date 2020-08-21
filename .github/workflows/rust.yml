@@ -23,6 +23,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Get ARM Binutils
       run: sudo apt-get update && sudo apt-get install binutils-arm-none-eabi --assume-yes
+    - name: Install Rust Source 
+      run: rustup component add rust-src
     - uses: actions-rs/cargo@v1
       with:
         toolchain: ${{ matrix.rust.toolchain }}
