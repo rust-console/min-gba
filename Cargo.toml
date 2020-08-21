@@ -9,9 +9,6 @@ publish = false
 
 [dependencies]
 
-[build-dependencies]
-cc = "1.0"
-
 [profile.dev]
 panic = "abort"
 [profile.release]
