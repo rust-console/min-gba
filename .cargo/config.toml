@@ -1,0 +1,9 @@
+[build]
+target = "thumbv4t-none-eabi"
+rustflags = ["-Clink-arg=-Tlinker_script.ld"]
+
+[target.thumbv4t-none-eabi]
+runner = "mgba"
+
+[unstable]
+build-std = ["core"]

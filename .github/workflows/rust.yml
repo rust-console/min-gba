@@ -1,0 +1,26 @@
+name: Rust
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        rust:
+        - { toolchain: nightly }
+    steps:
+    - uses: hecrj/setup-rust-action@v1
+      with:
+        profile: minimal
+        toolchain: ${{ matrix.rust.toolchain }}
+        default: true
+    - uses: actions/checkout@v1
+    - name: Get ARM Binutils
+      run: sudo apt-get update && sudo apt-get install binutils-arm-none-eabi -Y
+    - uses: actions-rs/cargo@v1
+      with:
+        toolchain: ${{ matrix.rust.toolchain }}
+        command: build
