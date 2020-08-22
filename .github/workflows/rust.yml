@@ -4,8 +4,8 @@ on:
   push: {}
   pull_request: {}
   schedule:
-    # Min Hr Day Month Weekday; so this should be 1am each day.
-    - cron: '* 1 * * *'
+    # Min Hr Day Month Weekday; so this should be 1:05am each day.
+    - cron: '5 1 * * *'
 
 jobs:
   build:
