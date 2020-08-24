@@ -28,3 +28,18 @@ It'll go nuts, here's how you fix it:
   ]
 }
 ```
+
+## Final ROM
+
+What you get with the project setup is an executable ELF file, but [mgba](https://mgba.io/) can run it directly, so that's fine.
+
+For a finalized ROM there's some post-processing steps:
+
+* `objcopy` must be used to extact just the binary guts from the ELF file.
+  * The command you want is probably something like this (change `main` to your binary's own name):
+  * `arm-none-eabi-objcopy -O binary target/thumbv4t-none-eabi/release/main target/main.gba`
+
+* `gbafix` should be used to apply the correct header.
+  * You can get a Rust version of `gbafix` via cargo: `cargo install gbafix`
+  * You can also get the C version of gbafix from the DevKitPro folks.
+  * Either way, `gbafix main.gba` will ensure that the gba file has the correct header info.
