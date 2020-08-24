@@ -8,13 +8,13 @@ MEMORY {
 
 SECTIONS {
   .text : {
-    KEEP(target/rsrt0.o(.text));
+    KEEP(rsrt0.o(.text));
     *(.text .text.*);
     . = ALIGN(4);
   } >rom = 0xff
 
   .rodata : {
-    KEEP(target/rsrt0.o(.rodata));
+    KEEP(rsrt0.o(.rodata));
     *(.rodata .rodata.*);
     . = ALIGN(4);
   } >rom = 0xff
@@ -22,7 +22,7 @@ SECTIONS {
   __data_rom_start = .;
   .data : {
     __data_iwram_start = ABSOLUTE(.);
-    KEEP(target/rsrt0.o(.data));
+    KEEP(rsrt0.o(.data));
     *(.data .data.*);
     . = ALIGN(4);
     __data_iwram_end = ABSOLUTE(.);
@@ -30,7 +30,7 @@ SECTIONS {
 
   .bss : {
     __bss_iwram_start = ABSOLUTE(.);
-    KEEP(target/rsrt0.o(.bss));
+    KEEP(rsrt0.o(.bss));
     *(.bss .bss.*);
     . = ALIGN(4);
     __bss_iwram_end = ABSOLUTE(.);
