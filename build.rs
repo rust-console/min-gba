@@ -14,5 +14,4 @@ fn main() {
   }
   //
   println!("cargo:rustc-link-search={}", out_dir);
-  println!("cargo:rustc-link-lib={}", out_file);
 }
