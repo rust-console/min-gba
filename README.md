@@ -5,7 +5,7 @@ A minimal setup to build Rust into a GBA ROM.
 ## What's Needed
 
 * `rustup default nightly` (or run all commands with `cargo +nightly`)
-* `rustup component install rust-src`
+* `rustup component add rust-src`
 * `arm-none-eabi` binutils (either via [The ARM Website][1], or your linux package manager).
 * The following files:
   * `.cargo/config.toml`
