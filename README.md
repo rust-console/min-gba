@@ -2,6 +2,11 @@
 
 A minimal setup to build Rust into a GBA ROM.
 
+This crate is not for general use!
+
+If you'd like to program a GBA game try the [gba](https://github.com/rust-console/gba) crate.
+The point of this repo is just to ensure that crater runs which break the thumbv4t-none-eabi target get caught.
+
 ## What's Needed
 
 * `rustup default nightly` (or run all commands with `cargo +nightly`)
